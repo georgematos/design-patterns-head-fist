@@ -15,17 +15,21 @@ import app.subjects.WeatherData;
 public class App {
     public static void main(String[] args) {
         WeatherData wd = new WeatherData();
-        CurrentConditionsDisplay ccDisplay = new CurrentConditionsDisplay(wd);
-        ForecastDisplay fcDisplay = new ForecastDisplay(wd);
-        StatisticsDisplay sDisplay = new StatisticsDisplay(wd);
+        CurrentConditionsDisplay ccDisplay = new CurrentConditionsDisplay();
+        ForecastDisplay fcDisplay = new ForecastDisplay();
+        StatisticsDisplay sDisplay = new StatisticsDisplay();
 
-        System.out.println("-----------------" + ccDisplay.getClass() + "-----------------");
+        wd.addPropertyChangeListener(ccDisplay);
+        wd.addPropertyChangeListener(fcDisplay);
+        wd.addPropertyChangeListener(sDisplay);
+
+        System.out.println("----------------------------------");
         Map<String, Measure> measures = getNewListMeasures(80, 65, 30.3f);
         wd.setMeasurements(measures);
-        System.out.println("-----------------" + fcDisplay.getClass() + "-----------------");
+        System.out.println("----------------------------------");
         Map<String, Measure> measures2 = getNewListMeasures(82, 70, 29.2f);
         wd.setMeasurements(measures2);
-        System.out.println("-----------------" + sDisplay.getClass() + "-----------------");
+        System.out.println("----------------------------------");
         Map<String, Measure> measures3 = getNewListMeasures(78, 90, 29.2f);
         wd.setMeasurements(measures3);
     }

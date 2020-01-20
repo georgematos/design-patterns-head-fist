@@ -9,18 +9,11 @@ import app.interfaces.DisplayElement;
 import app.measures.Humidity;
 import app.measures.Measure;
 import app.measures.Temperature;
-import app.subjects.WeatherData;
 
 public class CurrentConditionsDisplay implements PropertyChangeListener, DisplayElement {
 
     private Measure temperature;
     private Measure humidity;
-    private WeatherData weatherData;
-
-    public CurrentConditionsDisplay(WeatherData weatherData) {
-        this.weatherData = weatherData;
-        this.weatherData.addPropertyChangeListener(this);
-    }
 
     @Override
     public void display() {

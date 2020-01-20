@@ -6,19 +6,12 @@ import java.util.HashMap;
 
 import app.interfaces.DisplayElement;
 import app.measures.Temperature;
-import app.subjects.WeatherData;
 
 public class StatisticsDisplay implements PropertyChangeListener, DisplayElement {
     private float maxTemp = 0.0f;
     private float minTemp = 200;
     private float tempSum = 0.0f;
     private int numReadings;
-    private WeatherData weatherData;
-
-    public StatisticsDisplay(WeatherData weatherData) {
-        this.weatherData = weatherData;
-        this.weatherData.addPropertyChangeListener(this);
-    }
 
     public void display() {
         System.out.println("Avg/Max/Min temperature = " + (tempSum / numReadings) + "/" + maxTemp + "/" + minTemp);
